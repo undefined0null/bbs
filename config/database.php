@@ -90,6 +90,10 @@ return [
             'database' => 0,
         ],
 
+        'options' => [
+            'prefix' => 'larabbs_',
+        ],
+
     ],
 
 ];
