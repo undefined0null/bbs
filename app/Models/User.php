@@ -14,6 +14,7 @@ class User extends Authenticatable
     }
 
     use HasRoles;
+    use Traits\ActiveUserHelper;
 
     public function notify($instance)
     {
