@@ -1,1 +1,1 @@
-<a href="desolate-coast-91118.herokuapp.com" target="_blank">demo站点</a>
+<a href="http://desolate-coast-91118.herokuapp.com" target="_blank">demo站点</a>
