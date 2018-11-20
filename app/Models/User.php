@@ -75,7 +75,7 @@ class User extends Authenticatable
             $value = bcrypt($value);
         }
 
-        $this->attitudes['password'] = $value;
+        $this->attributes['password'] = $value;
     }
 
     public function setAvatarAttribute($path)
