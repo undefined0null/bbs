@@ -2,9 +2,19 @@
 
 namespace App\Models;
 
+use Redis;
+use Carbon\Carbon;
+
 class Topic extends Model
 {
-    protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
+    use Traits\RecentRepliedHelper;
+
+    const PER_PAGE = 20;
+    protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug', 'last_reply_at'];
+    protected $casts = [
+        'last_reply_at' => 'datetime',
+    ];
+
 
     public function category()
     {
@@ -52,5 +62,12 @@ class Topic extends Model
     public function replies()
     {
         return $this->hasMany(Reply::class);
+    }
+
+    public function updateLastReplyAt()
+    {
+        $this->update(['last_reply_at' => Carbon::now()->timestamp]);
+
+        return $this;
     }
 }

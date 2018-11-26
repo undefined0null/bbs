@@ -92,6 +92,7 @@ return [
 
         'options' => [
             'prefix' => 'larabbs_',
+            'separator' => env('REDIS_SEPARATOR', ':'),
         ],
 
     ],

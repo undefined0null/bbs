@@ -26,6 +26,9 @@ class ReplyObserver
 
         $reply->topic->increment('reply_count', 1);
 
+        // 更新话题最后回复时间并同步到redis
+        $reply->topic->updateLastReplyAt()->updateRecentReplied();
+
         // 通知作者话题被回复了
         $topic->user->notify(new TopicReplied($reply));
     }

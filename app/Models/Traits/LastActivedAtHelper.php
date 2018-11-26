@@ -9,7 +9,7 @@ trait LastActivedAtHelper
 {
     // 缓存相关
     protected $hash_prefix  = 'larabbs_last_actived_at';
-    protected $field_predix = 'user_';
+    protected $field_prefix = 'user_';
 
     public function recordLastActivedAt()
     {
@@ -37,7 +37,7 @@ trait LastActivedAtHelper
         // 遍历，并同步到数据库中
         foreach ($dates as $user_id => $actived_at) {
             // 会将 `user_1` 转换为 1
-            $user_id = str_replace($this->field_predix, '', $user_id);
+            $user_id = str_replace($this->field_prefix, '', $user_id);
 
             // 只有当用户存在时才更新到数据库中
             if ($user = $this->find($user_id)) {
@@ -79,6 +79,6 @@ trait LastActivedAtHelper
     public function getHashField()
     {
         // 字段名称，如：user_1
-        return $this->field_predix . $this->id;
+        return $this->field_prefix . $this->id;
     }
 }
