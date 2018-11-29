@@ -12,12 +12,24 @@ class RepliesController extends Controller
 {
     public function store(Topic $topic, ReplyRequest $request, Reply $reply)
     {
-        $reply->content = $request->content;
-        $reply->topic   = $topic->id;
-        $reply->user_id = $this->user()->id();
+        $reply->content  = $request->content;
+        $reply->topic_id = $topic->id;
+        $reply->user_id  = $this->user()->id;
         $reply->save();
 
         return $this->response->item($reply, new ReplyTransformer())
                 ->setStatusCode(201);
+    }
+
+    public function destroy(Topic $topic, Reply $reply)
+    {
+        if ($reply->topic_id != $topic->id) {
+            return $this->response->errorBadRequest();
+        }
+
+        $this->authorize('destroy', $reply);
+        $reply->delete();
+
+        return $this->response->noContent();
     }
 }

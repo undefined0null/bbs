@@ -88,8 +88,8 @@ $api->version('v1', [
             $api->patch('replies/{reply}', 'RepliesController@update')
                 ->name('api.replies.update');
             // 删除回复
-            $api->delete('replies/{reply}', 'RepliesController@destroy')
-                ->name('api.replies.destroy');
+            $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
+                ->name('api.topics.replies.destroy');
 
         });
     });
