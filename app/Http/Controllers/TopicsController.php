@@ -34,6 +34,17 @@ class TopicsController extends Controller
         if ( ! empty($request->slug) && $topic->slug != $request->slug) {
             return redirect($topic->link(), 301);
         }
+
+        $topic->visits()->increment();
+
+        logger('referer ======>');
+        logger($topic->visits()->refs());
+        logger('<===== referer');
+
+        logger('countries ======>');
+        logger($topic->visits()->countries());
+        logger('<===== countries');
+
         return view('topics.show', compact('topic'));
     }
 
