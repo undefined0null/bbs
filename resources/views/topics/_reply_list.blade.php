@@ -2,14 +2,14 @@
     @foreach ($replies as $index => $reply)
         <div class=" media"  name="reply{{ $reply->id }}" id="reply{{ $reply->id }}">
             <div class="avatar pull-left">
-                <a href="{{ route('users.show', [$reply->user_id]) }}">
+                <a href="{{ route('users.show', $reply->user) }}">
                 <img class="media-object img-thumbnail" alt="{{ $reply->user->name }}" src="{{ $reply->user->avatar }}"  style="width:48px;height:48px;"/>
                 </a>
             </div>
 
             <div class="infos">
                 <div class="media-heading">
-                    <a href="{{ route('users.show', [$reply->user_id]) }}" title="{{ $reply->user->name }}">
+                    <a href="{{ route('users.show', $reply->user) }}" title="{{ $reply->user->name }}">
                     {{ $reply->user->name }}
                     </a>
                     <span> •  </span>

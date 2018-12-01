@@ -13,7 +13,7 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable {
         notify as protected laravelNotify;
     }
-
+    use Traits\HashidHelper;
     use HasRoles;
     use Traits\ActiveUserHelper;
     use Traits\LastActivedAtHelper;

@@ -43,10 +43,10 @@
             <div class="panel-body">
                 <ul class="nav nav-tabs">
                     <li class="{{ active_class(if_query('tab', null)) }}">
-                        <a href="{{ route('users.show', $user->id) }}">Ta 的话题</a>
+                        <a href="{{ route('users.show', $user) }}">Ta 的话题</a>
                     </li>
                     <li class="{{ active_class(if_query('tab', 'replies')) }}">
-                        <a href="{{ route('users.show', [$user->id, 'tab' => 'replies']) }}">Ta 的回复</a>
+                        <a href="{{ route('users.show', [$user, 'tab' => 'replies']) }}">Ta 的回复</a>
                     </li>
                 </ul>
                 @if (if_query('tab', 'replies'))
